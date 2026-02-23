@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  /* We define our custom variables here for v4 */
+  --color-primary: #10B981; /* That nice Emerald Green */
+  --color-dark: #111827;    /* Deep Grey/Black */
+  --color-light: #F9FAFB;   /* Clean Background */
+  
+  --font-sans: "Inter", "sans-serif";
+}
+
+/* Global Styles */
+html, body {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px; /* Size of the grid squares */
+}
+
+/* linear-gradient(to right, rgba(0, 0, 0, 0.15) 1px, transparent 1px), */
+    /* linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 1px, transparent 1px); */
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Slower animation for the cards */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite; /* 40s = slow and smooth */
+  width: max-content; /* Ensures the flex container fits all items */
+}
+
+/* Pause animation when user hovers */
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
