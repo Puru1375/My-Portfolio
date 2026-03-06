@@ -2,10 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const stats = [
-  { id: 1, value: "1200+", label: "GitHub Commits" },
-  { id: 2, value: "15+", label: "Projects Built" },
-  { id: 3, value: "300+", label: "DSA Problems Solved" },
-  { id: 4, value: "3.8", label: "Current GPA" }, // Or remove if you prefer
+  { id: 1, value: "500+", label: "GitHub Commits" },
+  { id: 2, value: "7+", label: "Projects Built" },
+  { id: 3, value: "7.77", label: "Current GPA" }, // Or remove if you prefer
 ];
 
 const Stats = () => {
