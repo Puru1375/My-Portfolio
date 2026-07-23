@@ -1,6 +1,6 @@
 import React from "react";
 import { Github, Linkedin, Twitter, Download } from "lucide-react";
-import resume from "../assets/PurvanshuMachhi_Resume.pdf";
+import resume from "../assets/Purvanshu_cloud_Resume-4.pdf";
 
 const Footer = () => {
   return (
@@ -15,7 +15,7 @@ const Footer = () => {
         {/* Resume Download */}
         <a 
           href={resume} 
-          download="PurvanshuMachhi_Resume.pdf"
+          download="Purvanshu_cloud_Resume-4.pdf"
           className="flex items-center gap-2 bg-primary hover:bg-primary/80 text-white px-4 py-2 rounded-lg transition-colors mb-4 md:mb-0"
         >
           <Download size={18} />

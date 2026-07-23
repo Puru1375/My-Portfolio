@@ -38,6 +38,7 @@ function App() {
 
       {/* 4. Your Achievements */}
       <Achievements />
+      
 
       {/* 6. Contact Form */}
       <Contact />

@@ -1,33 +1,33 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Code2, Database, Layout, Server, Wrench, Terminal } from "lucide-react";
+import { Cloud, Wrench, Server, Database, Code2, Terminal } from "lucide-react";
 
 const skills = [
   {
-    category: "Languages",
-    icon: <Code2 size={20} className="text-blue-500" />,
-    tools: ["JavaScript", "Python", "Java", "C++"],
+    category: "Cloud Infrastructure (AWS)",
+    icon: <Cloud size={20} className="text-orange-500" />,
+    tools: ["ECS Fargate", "EC2", "RDS", "S3", "CloudFront", "VPC", "ALB", "IAM"],
   },
   {
-    category: "Frontend & App",
-    icon: <Layout size={20} className="text-purple-500" />,
-    tools: ["React", "React Native", "Tailwind CSS", "HTML5", "CSS3"],
-  },
-  {
-    category: "Backend API",
-    icon: <Server size={20} className="text-green-500" />,
-    tools: ["Node.js", "Express", "Django", "Flask", "Redis"],
+    category: "DevOps & CI/CD",
+    icon: <Terminal size={20} className="text-green-500" />,
+    tools: ["Docker", "Docker Compose", "GitHub Actions", "Linux", "Traefik", "Terraform (Learning)"],
   },
   {
     category: "Databases",
-    icon: <Database size={20} className="text-yellow-500" />,
-    tools: ["MongoDB", "PostgreSQL", "MySQL", "Supabase", "SQLite"],
+    icon: <Database size={20} className="text-blue-500" />,
+    tools: ["PostgreSQL", "MongoDB", "MySQL", "Supabase", "Redis"],
   },
   {
-    category: "DevOps & Tools",
-    icon: <Wrench size={20} className="text-orange-500" />,
-    tools: ["Git", "GitHub", "Docker", "Postman", "Vercel", "VS Code", "Godot"],
+    category: "Backend Development",
+    icon: <Server size={20} className="text-yellow-500" />,
+    tools: ["Node.js", "Express.js", "REST APIs", "Python"],
   },
+  {
+    category: "Frontend Development",
+    icon: <Code2 size={20} className="text-purple-500" />,
+    tools: ["React", "Vite", "JavaScript", "HTML/CSS", "Tailwind"],
+  }
 ];
 
 const containerVariants = {

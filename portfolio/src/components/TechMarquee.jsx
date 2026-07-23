@@ -1,8 +1,8 @@
 import React from "react";
 
 const techs = [
-  "REACT_V18", "NODE_JS", "MONGO_DB", "EXPRESS", "NEXT_JS", "TYPESCRIPT", 
-  "TAILWIND_CSS", "DOCKER", "AWS_EC2", "GIT_BASH", "REDUX_TK", "FIGMA"
+  "AWS_ECS", "DOCKER", "GITHUB_ACTIONS", "TERRAFORM", "AWS_EC2", "LINUX", 
+  "TRAEFIK", "NGINX", "POSTGRESQL", "NODE_JS", "REACT", "CI/CD"
 ];
 
 const TechMarquee = () => {

@@ -12,48 +12,36 @@ import attendance1 from "../assets/attendance_1.png";
 const projects = [
   {
     id: 1,
-    title: "PM Internship Allocation",
-    category: "Full-Stack Development",
-    image: "", 
-    images: [], // Single image for live preview
-    shortDesc: "Automated platform for allocating internships to students.",
-    fullDesc: "SkillBridge is an AI-powered national platform designed to automate and optimize internship allocation using NLP-based semantic matching and a Fair Allocation Algorithm (Gale-Shapley). It ensures bias-free, quota-compliant placements at scale while providing real-time analytics for students, industries, and government administrators.",
-    challenges: ["Students often upload resumes but leave their skill profile empty, leading to zero match scores","Processing AI scores for thousands of concurrent applicants would crash a standard server.","Ensuring high-performing students get placed while strictly adhering to Government Quotas (SC/ST/Women)."],
-    stack: ["React", "Node.js", "PostgreSQL", "Express", "Vercel"],
-    links: { 
-      demo: "https://pminternshipallocation.vercel.app", 
-      code: "https://github.com/Puru1375/pm_internship_allocation_website" 
-    },
-    useLiveThumbnail: true 
+    title: "Full Stack Production-Grade Deployment on AWS",
+    category: "AWS Cloud Architecture",
+    // Replace this with an Architecture Diagram of your AWS setup
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80", 
+    shortDesc: "Production-grade full-stack application deployed on AWS ECS Fargate.",
+    fullDesc: "Designed and deployed a highly available, production-grade cloud architecture. Automated deployments using GitHub Actions CI/CD pipelines to Amazon ECR and ECS Fargate. Configured secure networking using VPCs, private subnets, and Application Load Balancers (ALB).",
+    challenges: [
+      "Troubleshooting Docker-to-RDS connectivity through VPC and Security Groups.",
+      "Diagnosing ECS health check failures using ALB Target Groups and CloudWatch logs.",
+      "Securing infrastructure using IAM roles and AWS Secrets Manager."
+    ],
+    stack: ["AWS ECS", "Fargate", "RDS", "GitHub Actions", "CloudFront", "ACM", "Docker"],
+    links: { demo: "#", code: "#" }, // Link your Architecture diagram or Github
+    useLiveThumbnail: false 
   },
   {
     id: 2,
-    title: "StockMaster – Inventory Management System",
-    category: "Inventory Management System",
-    image: stockMaster1,
-    images: [
-      stockMaster1,
-      stockMaster2,
-      stockMaster3
+    title: "Secure EC2 Docker Deployment",
+    category: "DevOps / Proxy Configuration",
+    // Replace this with a diagram showing Traefik/Nginx routing
+    image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=80",
+    shortDesc: "Containerized deployment on AWS EC2 with automatic HTTPS and Reverse Proxy.",
+    fullDesc: "Streamlined full-stack production releases using Docker Compose. Implemented Traefik and Nginx to handle automatic HTTPS certificate generation, secure request routing, and reverse proxying. Removed public backend exposure by enforcing private Docker networks.",
+    challenges: [
+      "Configuring Traefik for dynamic reverse proxy routing.",
+      "Isolating backend containers from public internet access.",
+      "Managing environment-based configurations for consistent releases."
     ],
-    shortDesc: "Real-time Double-Entry Inventory System designed for Managers and Warehouse Staff.",
-    fullDesc: "StockMaster streamlines warehouse operations by replacing manual tracking with a centralized, digital ledger. It features a sophisticated Double-Entry inventory system where every move (Receipt, Delivery, Internal Transfer) is tracked and audited. The application offers a real-time dashboard for KPIs, visual stock charts, and a validation-based workflow (Draft → Ready → Done) to ensure total accuracy in stock levels across multiple locations.",
-    challenges: ["Implementing the Double-Entry Ledger Logic", "Real-Time Stock Availability Validation", "Multi-Location Inventory Aggregation"],
-    stack: ["React", "Node.js", "MongoDB", "Express"],
-    links: { demo: "", code: "https://github.com/Puru1375/Odoo_x_SPIT_Online" },
-    useLiveThumbnail: false
-  },
-  {
-    id: 3,
-    title: "QuickDesk – Support Ticket Management System ",
-    category: "Support Ticket Management System",
-    image: attendance1,
-    images: [attendance1],
-    shortDesc: "An ESP32-based attendance system that receives and identifies device MAC addresses via Bluetooth.",
-    fullDesc: "This project uses an ESP32 as a Bluetooth receiver for an attendance tracking system. The ESP32 advertises itself with the name ESP32_Attendance and waits for a Bluetooth-enabled device, such as a smartphone, to connect. Once a device connects, it sends its MAC address to the ESP32. The ESP32 receives this MAC address and prints it on the Serial Monitor. The printed MAC address is treated as the attendance record of that particular device, allowing the system to log attendance in a simple and wireless way.",
-    challenges: ["Scalability and Concurrency", "Data Persistence"],
-    stack: ["Node.js", "SQLite", "C++ (ESP32)"],
-    links: { demo: "", code: "https://github.com/Puru1375/Attendance_system" },
+    stack: ["AWS EC2", "Docker Compose", "Traefik", "Nginx", "Linux", "Supabase"],
+    links: { demo: "#", code: "#" },
     useLiveThumbnail: false
   }
 ];
@@ -77,7 +65,7 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
             <div className="inline-block px-4 py-1 bg-gray-900 rounded-full border border-gray-700 mb-4">
-                <span className="text-green-400 font-mono text-xs">ls ./projects/production</span>
+                <span className="text-green-400 font-mono text-xs">ls ./infrastructure/deployments</span>
             </div>
             <h2 className="text-4xl font-extrabold text-dark">
                 My <span className="text-primary">Work</span>
@@ -90,7 +78,7 @@ const Projects = () => {
             <motion.div
               key={project.id}
               layoutId={`card-${project.id}`}
-              onClick={() => setSelectedId(project.id)}
+              // onClick={() => setSelectedId(project.id)}
               className="bg-white rounded-xl overflow-hidden shadow-lg cursor-pointer hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 group"
             >
               {/* THUMBNAIL AREA */}

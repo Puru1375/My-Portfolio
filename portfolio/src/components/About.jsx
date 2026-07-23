@@ -55,11 +55,10 @@ const About = () => {
                 role: <span className="text-green-400">"Full Stack Dev"</span>,
               </p>
               <p className="pl-4">
-                Bio: <span className="text-green-400">"Computer Engineering student with strong hands-on experience in web & app development, backend systems, and 
-automation projects."</span>,
+                Bio: <span className="text-green-400">"Computer Engineering student with hands-on experience in DevOps, cloud platforms, deployment workflows, and automation projects."</span>,
               </p>
               <p className="pl-4">
-                CGPA: <span className="text-blue-400">7.77/10</span>,
+                CGPA: <span className="text-blue-400">8.10/10</span>,
               </p>
               <p className="pl-4">
                 coffee: <span className="text-blue-400">true</span>
@@ -68,7 +67,7 @@ automation projects."</span>,
             </div>
 
             {/* Background Logo Watermark */}
-            <Code className="absolute bottom-[-20px] right-[-20px] text-white opacity-5 w-32 h-32" />
+            <Code className="absolute -bottom-5 -right-5 text-white opacity-5 w-32 h-32" />
           </div>
         </motion.div>
       </div>

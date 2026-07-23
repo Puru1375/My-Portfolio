@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Sphere, MeshDistortMaterial, Torus, Icosahedron, Float } from "@react-three/drei";
+import {
+  OrbitControls,
+  Sphere,
+  MeshDistortMaterial,
+  Torus,
+  Icosahedron,
+  Float,
+} from "@react-three/drei";
 import { motion } from "framer-motion";
 
 // 1. The Typewriter Component
@@ -8,7 +15,7 @@ const Typewriter = ({ text }) => {
   const [displayText, setDisplayText] = useState("");
   const timeoutRef = useRef(null);
   const runIdRef = useRef(0);
-  
+
   useEffect(() => {
     let i = 0;
 
@@ -75,11 +82,10 @@ const HackerShape = () => {
   return (
     <Float speed={2} rotationIntensity={1} floatIntensity={1}>
       <group scale={1.8}>
-        
         {/* The Inner "Core" (Solid Green) */}
         <Sphere args={[1, 32, 32]} scale={0.5}>
-          <meshStandardMaterial 
-            color="#10B981" 
+          <meshStandardMaterial
+            color="#10B981"
             emissive="#10B981"
             emissiveIntensity={2}
             roughness={0.1}
@@ -89,8 +95,8 @@ const HackerShape = () => {
 
         {/* The Wireframe Cage (Structure) */}
         <Icosahedron args={[1.2, 0]} ref={meshRef}>
-          <meshStandardMaterial 
-            wireframe 
+          <meshStandardMaterial
+            wireframe
             color="#059669" // Darker Green
             linewidth={2}
             transparent
@@ -99,16 +105,19 @@ const HackerShape = () => {
         </Icosahedron>
 
         {/* The Orbiting Ring (Data Flow) */}
-        <Torus args={[1.6, 0.05, 16, 100]} ref={ringRef} rotation={[Math.PI / 2, 0, 0]}>
-          <meshStandardMaterial 
+        <Torus
+          args={[1.6, 0.05, 16, 100]}
+          ref={ringRef}
+          rotation={[Math.PI / 2, 0, 0]}
+        >
+          <meshStandardMaterial
             color="#34D399" // Lighter Green
             emissive="#34D399"
             emissiveIntensity={0.5}
-            roughness={0} 
-            metalness={1} 
+            roughness={0}
+            metalness={1}
           />
         </Torus>
-
       </group>
     </Float>
   );
@@ -117,10 +126,12 @@ const HackerShape = () => {
 // 3. The Main Hero Component
 const Hero = () => {
   return (
-    <section id="home" className="h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 overflow-hidden relative z-10">
-      
+    <section
+      id="home"
+      className="h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 overflow-hidden relative z-10"
+    >
       {/* LEFT SIDE: Text Content */}
-      <motion.div 
+      <motion.div
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -128,37 +139,45 @@ const Hero = () => {
       >
         {/* Developer Tag */}
         <div className="flex items-center gap-2 mb-4">
-            <div className="bg-gray-900 text-green-400 px-3 py-1 rounded-md text-sm font-mono flex items-center gap-2 shadow-lg border border-green-900">
-                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-                <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
-                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                <span>system_status: online</span>
-            </div>
+          <div className="bg-gray-900 text-green-400 px-3 py-1 rounded-md text-sm font-mono flex items-center gap-2 shadow-lg border border-green-900">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span>aws_region: ap-south-1 | status: healthy</span>{" "}
+            {/* Cool AWS touch */}
+          </div>
         </div>
-        
+
         <h1 className="text-5xl md:text-7xl font-extrabold text-dark leading-tight">
           Hi, I'm <br />
           <Typewriter text="Purvanshu Machhi." />
         </h1>
-        
-        <p className="text-gray-600 text-lg md:w-3/4 leading-relaxed font-mono">
-          <span className="text-primary font-bold">{">"}</span> Full Stack Developer <br/>
-          <span className="text-primary font-bold">{">"}</span> Specialized in MERN Stack <br/>
-          <span className="text-primary font-bold">{">"}</span> Turning ideas into <span className="bg-green-100 px-1 text-primary font-bold">code</span>.
+
+        <p className="text-gray-600 text-lg md:w-3/4 leading-relaxed font-mono mt-4">
+          <span className="text-primary font-bold">~</span> Cloud & DevOps
+          Engineer <br />
+          <span className="text-primary font-bold">~</span> Architecting
+          scalable AWS infrastructure <br />
+          <span className="text-primary font-bold">~</span> Building secure
+          CI/CD pipelines.
         </p>
-        
+
         <div className="flex gap-4 pt-4">
-          <a href="#projects" className="bg-primary text-white px-8 py-3 rounded-md font-mono font-bold shadow-lg hover:bg-green-600 hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 group">
+          <a
+            href="#projects"
+            className="bg-primary text-white px-8 py-3 rounded-md font-mono font-bold shadow-lg hover:bg-green-600 hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 group"
+          >
             <span className="group-hover:animate-bounce">↓</span> Projects
           </a>
-          <a href="#contact" className="border-2 border-primary text-primary px-8 py-3 rounded-md font-mono font-bold hover:bg-green-50 transition-all duration-300">
+          <a
+            href="#contact"
+            className="border-2 border-primary text-primary px-8 py-3 rounded-md font-mono font-bold hover:bg-green-50 transition-all duration-300"
+          >
             Let's Talk
           </a>
         </div>
       </motion.div>
 
       {/* RIGHT SIDE: 3D Animation */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, delay: 0.2 }}
@@ -168,10 +187,14 @@ const Hero = () => {
           <ambientLight intensity={0.5} />
           {/* Blue light from one side, Green from the other for a "Tech" feel */}
           <pointLight position={[10, 10, 10]} color="#10B981" intensity={2} />
-          <pointLight position={[-10, -10, -10]} color="#3B82F6" intensity={1} />
-          
+          <pointLight
+            position={[-10, -10, -10]}
+            color="#3B82F6"
+            intensity={1}
+          />
+
           <HackerShape />
-          
+
           <OrbitControls enableZoom={false} />
         </Canvas>
       </motion.div>

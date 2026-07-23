@@ -1,35 +1,44 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { GitCommit, GitBranch, Terminal, Cpu } from "lucide-react";
+import { GitCommit, GitBranch, Terminal, Cpu, Trophy, Cloud, Wrench, Server, Database, Code2,GraduationCap} from "lucide-react";
 
 const timelineData = [
   {
-    year: "2024",
-    hash: "a1b2c3d",
-    title: "Final Year Capstone",
-    location: "University",
-    desc: "Optimized ML algorithms for predictive analytics. Integrated Python backend with React frontend.",
-    icon: <Cpu size={18} />,
-    tag: "feat(ml): deploy"
+    year: "Dec 2025",
+    hash: "sih25-final",
+    title: "Smart India Hackathon Finalist",
+    location: "National Level",
+    desc: "Selected for the Final Round for Problem Statement SIH25033. Built an AI-Based Smart Allocation Engine for the PM Internship Scheme.",
+    icon: <Trophy size={18} />,
+    tag: "achievement: finalist"
   },
   {
-    year: "2023",
-    hash: "f4e5d6c",
-    title: "Full Stack Intern",
-    location: "Tech Startup",
-    desc: "Refactored legacy API endpoints. Reduced server response time by 30% using Redis caching.",
-    icon: <Terminal size={18} />,
-    tag: "fix(api): optimize"
+    year: "Sep 2025",
+    hash: "odoo-hack",
+    title: "Odoo Hackathon Finalist",
+    location: "NMIT, Bangalore",
+    desc: "Selected for the Final Round. Developed 'StockMaster', a highly scalable, modular Inventory Management System.",
+    icon: <Trophy size={18} />,
+    tag: "achievement: finalist"
   },
   {
-    year: "2022",
-    hash: "9g8h7i6",
-    title: "Hackathon Win",
-    location: "Smart India Hackathon",
-    desc: "Built a Fintech solution in 24 hours. Led the frontend team using React & Tailwind.",
-    icon: <GitBranch size={18} />,
-    tag: "init: project"
+    year: "2024 - Present",
+    hash: "aws-cloud",
+    title: "Cloud & DevOps Transition",
+    location: "Self-Taught / Projects",
+    desc: "Mastered containerization (Docker) and AWS infrastructure. Built production-grade CI/CD pipelines and deployed ECS Fargate clusters.",
+    icon: <Cloud size={18} />,
+    tag: "learning: devops"
   },
+  {
+    year: "2022 - 2026",
+    hash: "b-tech",
+    title: "B.E. Computer Engineering",
+    location: "Gujarat Technological University",
+    desc: "Currently maintaining an 8.10 CGPA. Building a strong foundation in OS, Networking, and Data Structures.",
+    icon: <GraduationCap size={18} />,
+    tag: "education: ongoing"
+  }
 ];
 
 const Timeline = () => {
