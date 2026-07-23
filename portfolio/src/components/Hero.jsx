@@ -1,203 +1,694 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
 import {
-  OrbitControls,
-  Sphere,
-  MeshDistortMaterial,
-  Torus,
-  Icosahedron,
-  Float,
-} from "@react-three/drei";
+  ArrowDown,
+  ArrowUpRight,
+  CheckCircle2,
+  Cloud,
+  Container,
+  GitBranch,
+  MapPin,
+  Server,
+} from "lucide-react";
+
 import { motion } from "framer-motion";
 
-// 1. The Typewriter Component
-const Typewriter = ({ text }) => {
-  const [displayText, setDisplayText] = useState("");
-  const timeoutRef = useRef(null);
-  const runIdRef = useRef(0);
+import CloudScene from "./CloudScene";
 
-  useEffect(() => {
-    let i = 0;
+const technologies = [
+  "AWS",
+  "Docker",
+  "GitHub Actions",
+  "Linux",
+  "Terraform",
+  "React",
+];
 
-    const startTyping = () => {
-      runIdRef.current += 1;
-      const runId = runIdRef.current;
-      i = 0;
-      setDisplayText("");
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+const statusItems = [
+  {
+    icon: Cloud,
+    label: "Cloud",
+    value: "AWS",
+  },
+  {
+    icon: Container,
+    label: "Containers",
+    value: "Docker",
+  },
+  {
+    icon: GitBranch,
+    label: "Delivery",
+    value: "CI/CD",
+  },
+];
 
-      const typeNext = () => {
-        if (runIdRef.current !== runId) {
-          return;
-        }
-        if (i < text.length) {
-          i += 1;
-          setDisplayText(text.slice(0, i));
-          timeoutRef.current = setTimeout(typeNext, 100);
-        } else {
-          timeoutRef.current = setTimeout(startTyping, 3500);
-        }
-      };
-
-      typeNext();
-    };
-
-    startTyping();
-
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, [text]);
-
-  return (
-    <span className="text-primary inline-block min-w-[10px]">
-      {displayText}
-      <span className="animate-pulse">|</span>
-    </span>
-  );
-};
-
-// 2. THE NEW DEVELOPER 3D SHAPE
-const HackerShape = () => {
-  const meshRef = useRef(null);
-  const ringRef = useRef(null);
-
-  // Rotate the shapes on every frame
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    if (meshRef.current) {
-      meshRef.current.rotation.x = t * 0.2;
-      meshRef.current.rotation.y = t * 0.3;
-    }
-    if (ringRef.current) {
-      ringRef.current.rotation.x = -t * 0.2;
-      ringRef.current.rotation.y = t * 0.1;
-    }
-  });
-
-  return (
-    <Float speed={2} rotationIntensity={1} floatIntensity={1}>
-      <group scale={1.8}>
-        {/* The Inner "Core" (Solid Green) */}
-        <Sphere args={[1, 32, 32]} scale={0.5}>
-          <meshStandardMaterial
-            color="#10B981"
-            emissive="#10B981"
-            emissiveIntensity={2}
-            roughness={0.1}
-            metalness={0.8}
-          />
-        </Sphere>
-
-        {/* The Wireframe Cage (Structure) */}
-        <Icosahedron args={[1.2, 0]} ref={meshRef}>
-          <meshStandardMaterial
-            wireframe
-            color="#059669" // Darker Green
-            linewidth={2}
-            transparent
-            opacity={0.6}
-          />
-        </Icosahedron>
-
-        {/* The Orbiting Ring (Data Flow) */}
-        <Torus
-          args={[1.6, 0.05, 16, 100]}
-          ref={ringRef}
-          rotation={[Math.PI / 2, 0, 0]}
-        >
-          <meshStandardMaterial
-            color="#34D399" // Lighter Green
-            emissive="#34D399"
-            emissiveIntensity={0.5}
-            roughness={0}
-            metalness={1}
-          />
-        </Torus>
-      </group>
-    </Float>
-  );
-};
-
-// 3. The Main Hero Component
 const Hero = () => {
   return (
     <section
       id="home"
-      className="h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 overflow-hidden relative z-10"
+      className="
+        relative
+
+        min-h-screen
+
+        flex
+        items-center
+
+        px-6
+        pt-28
+        pb-16
+
+        md:px-10
+        lg:px-16
+        xl:px-20
+
+        overflow-hidden
+      "
     >
-      {/* LEFT SIDE: Text Content */}
-      <motion.div
-        initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="flex-1 space-y-6 z-10 mt-20 md:mt-0"
+      <div
+        className="
+          w-full
+          max-w-[1450px]
+          mx-auto
+
+          grid
+          lg:grid-cols-[1.02fr_.98fr]
+
+          gap-10
+          lg:gap-6
+
+          items-center
+        "
       >
-        {/* Developer Tag */}
-        <div className="flex items-center gap-2 mb-4">
-          <div className="bg-gray-900 text-green-400 px-3 py-1 rounded-md text-sm font-mono flex items-center gap-2 shadow-lg border border-green-900">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-            <span>aws_region: ap-south-1 | status: healthy</span>{" "}
-            {/* Cool AWS touch */}
+        {/* =========================
+            LEFT
+        ========================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.7,
+          }}
+          className="
+            relative
+            z-10
+            max-w-3xl
+          "
+        >
+          {/* Status */}
+
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: -20,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{
+              delay: 0.15,
+            }}
+            className="section-label"
+          >
+            <span
+              className="
+                relative
+                flex
+                w-2
+                h-2
+              "
+            >
+              <span
+                className="
+                  absolute
+                  inline-flex
+                  w-full
+                  h-full
+                  rounded-full
+                  opacity-60
+                  animate-ping
+                "
+                style={{
+                  background:
+                    "var(--accent)",
+                }}
+              />
+
+              <span
+                className="
+                  relative
+                  inline-flex
+                  w-2
+                  h-2
+                  rounded-full
+                "
+                style={{
+                  background:
+                    "var(--accent)",
+                }}
+              />
+            </span>
+
+            SYSTEM // AVAILABLE FOR OPPORTUNITIES
+          </motion.div>
+
+          {/* Main heading */}
+
+          <h1
+            className="
+              mt-4
+
+              text-[clamp(3.3rem,7vw,7.3rem)]
+
+              font-extrabold
+
+              tracking-[-0.065em]
+
+              leading-[0.91]
+            "
+            style={{
+              color:
+                "var(--text-primary)",
+            }}
+          >
+            Building
+            <br />
+
+            <span
+              style={{
+                color: "var(--accent)",
+              }}
+            >
+              infrastructure
+            </span>
+
+            <br />
+
+            that scales.
+          </h1>
+
+          {/* Intro */}
+
+          <p
+            className="
+              mt-8
+
+              max-w-2xl
+
+              text-base
+              md:text-lg
+
+              leading-8
+            "
+            style={{
+              color:
+                "var(--text-secondary)",
+            }}
+          >
+            I'm{" "}
+            <strong
+              style={{
+                color:
+                  "var(--text-primary)",
+              }}
+            >
+              Purvanshu Machhi
+            </strong>
+            , a Cloud & DevOps Engineer
+            focused on building secure AWS
+            infrastructure, automated CI/CD
+            pipelines, containerized workloads,
+            and production-ready applications.
+          </p>
+
+          {/* Location */}
+
+          <div
+            className="
+              mt-5
+
+              flex
+              flex-wrap
+              items-center
+
+              gap-x-5
+              gap-y-2
+
+              text-sm
+              font-mono
+            "
+            style={{
+              color: "var(--text-muted)",
+            }}
+          >
+            <span
+              className="
+                flex
+                items-center
+                gap-2
+              "
+            >
+              <MapPin size={14} />
+
+              India
+            </span>
+
+            <span
+              className="
+                flex
+                items-center
+                gap-2
+              "
+            >
+              <CheckCircle2
+                size={14}
+                style={{
+                  color:
+                    "var(--accent)",
+                }}
+              />
+
+              Open to Cloud / DevOps roles
+            </span>
           </div>
-        </div>
 
-        <h1 className="text-5xl md:text-7xl font-extrabold text-dark leading-tight">
-          Hi, I'm <br />
-          <Typewriter text="Purvanshu Machhi." />
-        </h1>
+          {/* CTA */}
 
-        <p className="text-gray-600 text-lg md:w-3/4 leading-relaxed font-mono mt-4">
-          <span className="text-primary font-bold">~</span> Cloud & DevOps
-          Engineer <br />
-          <span className="text-primary font-bold">~</span> Architecting
-          scalable AWS infrastructure <br />
-          <span className="text-primary font-bold">~</span> Building secure
-          CI/CD pipelines.
-        </p>
+          <div
+            className="
+              mt-9
 
-        <div className="flex gap-4 pt-4">
-          <a
-            href="#projects"
-            className="bg-primary text-white px-8 py-3 rounded-md font-mono font-bold shadow-lg hover:bg-green-600 hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 group"
+              flex
+              flex-col
+              sm:flex-row
+
+              gap-3
+            "
           >
-            <span className="group-hover:animate-bounce">↓</span> Projects
-          </a>
-          <a
-            href="#contact"
-            className="border-2 border-primary text-primary px-8 py-3 rounded-md font-mono font-bold hover:bg-green-50 transition-all duration-300"
-          >
-            Let's Talk
-          </a>
-        </div>
-      </motion.div>
+            <a
+              href="#projects"
+              className="
+                group
 
-      {/* RIGHT SIDE: 3D Animation */}
-      <motion.div
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 0.2 }}
-        className="flex-1 h-[50vh] md:h-[600px] w-full relative cursor-grab z-0"
+                inline-flex
+                items-center
+                justify-center
+                gap-2
+
+                px-6
+                py-3.5
+
+                rounded-xl
+
+                font-semibold
+
+                transition-all
+                duration-300
+
+                hover:-translate-y-1
+              "
+              style={{
+                background:
+                  "var(--accent)",
+                color: "#020617",
+                boxShadow:
+                  "0 15px 45px rgba(var(--accent-rgb), .18)",
+              }}
+            >
+              Explore Projects
+
+              <ArrowDown
+                size={17}
+                className="
+                  transition-transform
+                  group-hover:translate-y-1
+                "
+              />
+            </a>
+
+            <a
+              href="#contact"
+              className="
+                group
+
+                inline-flex
+                items-center
+                justify-center
+                gap-2
+
+                px-6
+                py-3.5
+
+                rounded-xl
+
+                border
+
+                font-semibold
+
+                transition-all
+                duration-300
+
+                hover:-translate-y-1
+              "
+              style={{
+                borderColor:
+                  "var(--border)",
+                background:
+                  "var(--surface)",
+                color:
+                  "var(--text-primary)",
+              }}
+            >
+              Let's Connect
+
+              <ArrowUpRight
+                size={17}
+                className="
+                  transition-transform
+
+                  group-hover:translate-x-0.5
+                  group-hover:-translate-y-0.5
+                "
+              />
+            </a>
+          </div>
+
+          {/* Technologies */}
+
+          <div
+            className="
+              mt-10
+              pt-6
+
+              border-t
+            "
+            style={{
+              borderColor:
+                "var(--border)",
+            }}
+          >
+            <p
+              className="
+                mb-4
+
+                text-[11px]
+
+                font-mono
+
+                uppercase
+                tracking-[0.18em]
+              "
+              style={{
+                color:
+                  "var(--text-muted)",
+              }}
+            >
+              Core technology
+            </p>
+
+            <div
+              className="
+                flex
+                flex-wrap
+                gap-2
+              "
+            >
+              {technologies.map(
+                (technology) => (
+                  <span
+                    key={technology}
+                    className="
+                      px-3
+                      py-1.5
+
+                      rounded-lg
+
+                      border
+
+                      text-xs
+                      font-mono
+
+                      transition-colors
+                    "
+                    style={{
+                      borderColor:
+                        "var(--border)",
+
+                      background:
+                        "var(--surface)",
+
+                      color:
+                        "var(--text-secondary)",
+                    }}
+                  >
+                    {technology}
+                  </span>
+                ),
+              )}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* =========================
+            RIGHT — 3D
+        ========================== */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            scale: 0.94,
+            x: 30,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            x: 0,
+          }}
+          transition={{
+            duration: 0.9,
+            delay: 0.2,
+          }}
+          className="
+            relative
+
+            min-h-[460px]
+            lg:min-h-[650px]
+
+            rounded-[2rem]
+
+            border
+
+            overflow-hidden
+
+            glass-panel
+          "
+          style={{
+            borderColor:
+              "var(--border)",
+          }}
+        >
+          {/* Decorative header */}
+
+          <div
+            className="
+              absolute
+              top-0
+              left-0
+              right-0
+
+              z-20
+
+              h-12
+
+              px-4
+
+              flex
+              items-center
+              justify-between
+
+              border-b
+
+              pointer-events-none
+            "
+            style={{
+              borderColor:
+                "var(--border)",
+
+              background:
+                "rgba(5,8,22,.35)",
+            }}
+          >
+            <div
+              className="
+                flex
+                gap-1.5
+              "
+            >
+              <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+
+              <span className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
+
+              <span className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
+            </div>
+
+            <span
+              className="
+                text-[10px]
+                sm:text-xs
+                font-mono
+              "
+              style={{
+                color:
+                  "var(--text-muted)",
+              }}
+            >
+              infrastructure.production
+            </span>
+
+            <Server
+              size={14}
+              style={{
+                color:
+                  "var(--text-muted)",
+              }}
+            />
+          </div>
+
+          <div className="absolute inset-0 pt-12">
+            <CloudScene />
+          </div>
+
+          {/* Architecture status */}
+
+          <div
+            className="
+              absolute
+              left-4
+              right-4
+              bottom-10
+
+              z-20
+
+              grid
+              grid-cols-3
+
+              gap-2
+
+              pointer-events-none
+            "
+          >
+            {statusItems.map(
+              ({
+                icon: Icon,
+                label,
+                value,
+              }) => (
+                <div
+                  key={label}
+                  className="
+                    rounded-xl
+
+                    border
+
+                    px-3
+                    py-2.5
+
+                    backdrop-blur-xl
+                  "
+                  style={{
+                    background:
+                      "rgba(5,8,22,.68)",
+
+                    borderColor:
+                      "rgba(148,163,184,.12)",
+                  }}
+                >
+                  <div
+                    className="
+                      flex
+                      items-center
+                      gap-1.5
+
+                      text-[9px]
+                      sm:text-[10px]
+
+                      font-mono
+
+                      uppercase
+                      tracking-wider
+                    "
+                    style={{
+                      color:
+                        "#64748b",
+                    }}
+                  >
+                    <Icon size={11} />
+
+                    {label}
+                  </div>
+
+                  <p
+                    className="
+                      mt-1
+
+                      text-xs
+                      sm:text-sm
+
+                      font-semibold
+
+                      text-slate-100
+                    "
+                  >
+                    {value}
+                  </p>
+                </div>
+              ),
+            )}
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Scroll indicator */}
+
+      <a
+        href="#about"
+        aria-label="Scroll to about section"
+        className="
+          hidden
+          xl:flex
+
+          absolute
+          bottom-8
+          left-1/2
+          -translate-x-1/2
+
+          flex-col
+          items-center
+          gap-2
+
+          text-[10px]
+          font-mono
+
+          uppercase
+          tracking-[0.18em]
+        "
+        style={{
+          color: "var(--text-muted)",
+        }}
       >
-        <Canvas className="absolute inset-0">
-          <ambientLight intensity={0.5} />
-          {/* Blue light from one side, Green from the other for a "Tech" feel */}
-          <pointLight position={[10, 10, 10]} color="#10B981" intensity={2} />
-          <pointLight
-            position={[-10, -10, -10]}
-            color="#3B82F6"
-            intensity={1}
-          />
+        Scroll
 
-          <HackerShape />
-
-          <OrbitControls enableZoom={false} />
-        </Canvas>
-      </motion.div>
+        <ArrowDown
+          size={14}
+          className="animate-bounce"
+        />
+      </a>
     </section>
   );
 };

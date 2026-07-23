@@ -1,52 +1,47 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import About from "./components/About";
 import Stats from "./components/Stats";
 import Projects from "./components/Projects";
-import Timeline from "./components/Timeline";
 import Skills from "./components/Skills";
-import Contact from "./components/Contact"; 
-import Footer from "./components/Footer"; 
-import TechMarquee from "./components/TechMarquee"; // NEW
-import About from "./components/About";
 import Achievements from "./components/Achievements";
-import BackgroundParticles from "./components/BackgroundParticles"; 
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import Timeline from "./components/Timeline";
+import CommandPalette from "./components/CommandPalette";
+
+import AmbientBackground from "./components/AmbientBackground";
 
 function App() {
   return (
-    <div className="font-sans text-dark bg-light">
-      <BackgroundParticles /> {/* Subtle animated background */}
-      {/* Navbar */}
-      <Navbar />
+    <div className="portfolio-app">
+      <AmbientBackground />
 
-      {/* 1. The 3D Intro */}
-      <Hero />
+      <div className="page-content">
+        <Navbar />
 
+        <main>
+          <Hero />
 
-      <About /> 
-      
-      {/* 2. The Student "Power" Bar */}
-      <Stats />
-      
-      {/* 4. Your Path */}
-      {/* <Timeline /> */}
+          <About />
 
-      {/* 3. Your Work */}
-      <Projects />
-      
-      {/* 5. Your Skills */}
-      <Skills />
+          <Stats />
 
-      {/* 4. Your Achievements */}
-      <Achievements />
-      
+          <Projects />
 
-      {/* 6. Contact Form */}
-      <Contact />
+          <Skills />
 
-      {/* <TechMarquee /> */}
-      {/* 7. Footer */}
-      <Footer />
-      
+          <Timeline />
+
+          <Achievements />
+
+          <Contact />
+        </main>
+
+        <Footer />
+
+        <CommandPalette />
+      </div>
     </div>
   );
 }
