@@ -180,7 +180,7 @@ const projects = [
 
     images: [project1],
 
-    github: "",
+    github: "https://github.com/Puru1375/Odoo_x_SPIT_Online",
 
     live: "",
   },
@@ -294,7 +294,7 @@ const projects = [
 
     images: [project2],
 
-    github: "",
+    github: "https://github.com/Puru1375/pm_internship_allocation_website",
 
     live: "",
   },
@@ -401,7 +401,7 @@ const projects = [
 
     images: [project3],
 
-    github: "",
+    github: "https://github.com/Puru1375/pm_internship_allocation_website",
 
     live: "",
   },
