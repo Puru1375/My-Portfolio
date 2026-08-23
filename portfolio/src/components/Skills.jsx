@@ -69,8 +69,8 @@ const skillGroups = [
       "Git",
       "Linux",
       "CI/CD",
-      "Bash",
-      "Terraform (Learning)",
+      // "Bash",
+      "Terraform",
     ],
 
     workflow: [
@@ -125,7 +125,7 @@ const skillGroups = [
       "Express.js",
       "REST APIs",
       "Python",
-      "Prisma",
+      // "Prisma",
     ],
 
     workflow: [

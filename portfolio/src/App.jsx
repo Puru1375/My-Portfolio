@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Timeline from "./components/Timeline";
 import CommandPalette from "./components/CommandPalette";
+import Certifications from "./components/Certifications"; 
 
 import AmbientBackground from "./components/AmbientBackground";
 
@@ -34,6 +35,8 @@ function App() {
           <Timeline />
 
           <Achievements />
+
+          <Certifications />
 
           <Contact />
         </main>

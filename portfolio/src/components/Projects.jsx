@@ -46,144 +46,223 @@ import dockerTraefikArchitecture from "../assets/pm-i-diagram.png";
 
 const projects = [
   {
-    id: 1,
+  id: 1,
 
-    number: "01",
+  number: "01",
 
-    category:
-      "Cloud Architecture / DevOps",
+  category:
+    "Cloud Architecture / DevOps / Infrastructure as Code",
 
-    title:
-      "Production-Grade Full Stack AWS Platform",
+  title:
+    "Production-Grade AWS Cloud Platform",
 
-    shortTitle:
-      "AWS Production Platform",
+  shortTitle:
+    "AWS DevOps Platform",
 
-    featured: true,
+  featured: true,
 
-    description:
-      "Designed and deployed a production-grade full-stack application on AWS using containerized backend services, managed PostgreSQL, CDN delivery, secure networking and automated CI/CD.",
+  description:
+    "Designed and deployed a production-grade full-stack application platform on AWS using Terraform, Docker, ECS Fargate, RDS PostgreSQL, CloudFront, S3 and GitHub Actions CI/CD.",
 
-    problem:
-      "The application needed to move beyond a basic development deployment into a secure, scalable production architecture with isolated networking, managed infrastructure, HTTPS, automated delivery and production monitoring.",
+  problem:
+    "The application needed a production-ready cloud platform with secure networking, isolated application and database layers, containerized deployment, managed PostgreSQL, HTTPS, infrastructure as code, automated CI/CD and separate development and production environments.",
 
-    solution:
-      "I designed a multi-tier AWS architecture where the React frontend is delivered through S3 and CloudFront, backend containers run on ECS Fargate behind an Application Load Balancer, and PostgreSQL runs on Amazon RDS inside private networking.",
+  solution:
+    "Built a modular AWS infrastructure using Terraform with a custom VPC, public and private subnets, ALB, ECS Fargate, RDS PostgreSQL, S3 and CloudFront. Implemented GitHub Actions for infrastructure and application CI/CD using GitHub OIDC authentication, Docker/ECR for backend deployments, and S3/CloudFront for frontend delivery.",
 
-    architecture: [
-      "CloudFront",
-      "S3",
-      "ALB",
-      "ECS Fargate",
-      "RDS",
-    ],
+  architecture: [
+    "VPC",
+    "CloudFront",
+    "S3",
+    "ALB",
+    "ECS Fargate",
+    "RDS PostgreSQL",
+  ],
 
-    architectureDetails: [
-      {
-        label: "Frontend",
-        value: "S3 + CloudFront",
-      },
-      {
-        label: "Traffic",
-        value: "HTTPS + ALB",
-      },
-      {
-        label: "Compute",
-        value: "ECS Fargate",
-      },
-      {
-        label: "Database",
-        value: "Amazon RDS",
-      },
-      {
-        label: "Networking",
-        value: "VPC + Subnets + Security Groups",
-      },
-      {
-        label: "Security",
-        value: "HTTPS + Secrets Manager + IAM Roles",
-      },
-    ],
+  architectureDetails: [
+    {
+      label: "Frontend",
+      value: "React/Vite + S3 + CloudFront",
+    },
+    {
+      label: "Backend",
+      value: "Node.js/Express + Docker + ECS Fargate",
+    },
+    {
+      label: "Database",
+      value: "PostgreSQL + Amazon RDS",
+    },
+    {
+      label: "Traffic",
+      value: "CloudFront + ALB + HTTPS",
+    },
+    {
+      label: "Networking",
+      value: "VPC + Public/Private Subnets + Security Groups + NACLs",
+    },
+    {
+      label: "Infrastructure",
+      value: "Terraform Modules + Remote State",
+    },
+    {
+      label: "CI/CD",
+      value: "GitHub Actions + OIDC + ECR + ECS + S3",
+    },
+    {
+      label: "Security",
+      value: "IAM + OIDC + Secrets Manager + ACM + Private Networking",
+    },
+  ],
 
-    highlights: [
-      "Custom VPC with public and private subnet architecture",
-      "Dockerized Node.js backend deployed using ECS Fargate",
-      "React frontend hosted on S3 and distributed through CloudFront",
-      "PostgreSQL database deployed using Amazon RDS",
-      "Application Load Balancer with health checks",
-      "HTTPS using AWS Certificate Manager",
-      "Secrets managed outside application source code",
-      "CloudWatch logging and production monitoring",
-    ],
+  highlights: [
+    "Designed a multi-tier AWS architecture using Terraform",
+    "Created reusable Terraform modules for VPC, ECS, ALB, RDS, ECR, IAM, S3 and CloudFront",
+    "Implemented public and private subnet architecture with controlled network access",
+    "Containerized the Node.js backend using Docker",
+    "Stored Docker images in Amazon ECR with image scanning and lifecycle policies",
+    "Deployed backend containers on ECS Fargate behind an Application Load Balancer",
+    "Hosted the React/Vite frontend on Amazon S3 and distributed it through CloudFront",
+    "Deployed PostgreSQL using Amazon RDS inside private database networking",
+    "Implemented AWS Secrets Manager for sensitive application configuration",
+    "Configured HTTPS using AWS Certificate Manager",
+    "Implemented GitHub Actions CI/CD for infrastructure and application deployments",
+    "Used GitHub OIDC to authenticate GitHub Actions with AWS without long-lived AWS access keys",
+    "Implemented separate development and production Terraform environments",
+    "Added Terraform plan/check workflows for pull requests and controlled production deployment",
+    "Configured CloudWatch logging and ECS/ALB health checks",
+  ],
 
-    challenges: [
-      {
-        title:
-          "Container-to-database connectivity",
+  challenges: [
+    {
+      title:
+        "Terraform state recovery after network interruption",
 
-        description:
-          "The backend worked locally with RDS but initially failed when running inside Docker/ECS. I investigated networking, security groups and container configuration to establish reliable database connectivity.",
-      },
+      description:
+        "During a Terraform apply operation, the network connection was unexpectedly interrupted. The deployment left an errored Terraform state. I inspected the generated state, compared Terraform state with the actual AWS infrastructure, recovered the state and verified the infrastructure using terraform plan before continuing the deployment.",
+    },
 
-      {
-        title:
-          "ECS health checks",
+    {
+      title:
+        "GitHub Actions OIDC authentication",
 
-        description:
-          "The application container could connect to PostgreSQL but was marked unhealthy by the load balancer. I configured a dedicated health endpoint and aligned container and ALB health checks.",
-      },
+      description:
+        "The production Terraform pipeline initially failed with sts:AssumeRoleWithWebIdentity authorization errors. I investigated the GitHub OIDC token claims and IAM trust policy, corrected the repository and branch conditions, and verified the role assumption from GitHub Actions.",
+    },
 
-      {
-        title:
-          "Secure production networking",
+    {
+      title:
+        "ECS container and database connectivity",
 
-        description:
-          "The architecture required separating internet-facing resources from application and database workloads while allowing only required traffic between layers.",
-      },
-    ],
+      description:
+        "The backend connected to PostgreSQL locally but initially had connectivity issues when running inside Docker/ECS. I investigated container configuration, private networking and security group rules to establish reliable ECS-to-RDS communication.",
+    },
 
-    security: [
-      "Private application/database networking",
-      "Security Groups",
-      "IAM roles",
-      "Secrets Manager",
-      "HTTPS / ACM",
-      "AWS WAF architecture",
-    ],
+    {
+      title:
+        "ECS and ALB health checks",
 
-    cicd: [
-      "GitHub Push",
-      "GitHub Actions",
-      "Docker Build",
-      "Amazon ECR",
-      "ECS Deploy",
-    ],
+      description:
+        "The ECS task could connect to PostgreSQL but was initially reported as unhealthy by the Application Load Balancer. I implemented and configured a dedicated /health endpoint and aligned the container port, target group and health check configuration.",
+    },
 
-    tech: [
-      "AWS",
-      "VPC",
-      "ECS Fargate",
-      "Docker",
-      "Amazon ECR",
-      "Amazon RDS",
-      "PostgreSQL",
-      "S3",
-      "CloudFront",
-      "ALB",
-      "AWS Secrets Manager",
-      "IAM",
-      "ACM",
-      "GitHub Actions",
-      "React",
-      "Node.js",
-    ],
+    {
+      title:
+        "Production CI/CD deployment flow",
 
-    images: [project1],
+      description:
+        "The application originally required manually creating AWS resources, pushing Docker images and uploading frontend files. I automated the workflow using GitHub Actions to build and push Docker images to ECR, update ECS task definitions, deploy the backend, build the frontend, synchronize files to S3 and invalidate CloudFront.",
+    },
 
-    github: "https://github.com/Puru1375/Odoo_x_SPIT_Online",
+    {
+      title:
+        "CORS and environment configuration",
 
-    live: "",
-  },
+      description:
+        "Frontend API requests required controlled cross-origin access. I configured the backend to use the ALLOWED_ORIGINS environment variable and integrated environment configuration into the deployment pipeline so the frontend and backend communicate correctly across environments.",
+    },
+  ],
+
+  security: [
+    "Private application and database subnets",
+    "Security Groups",
+    "Network ACLs",
+    "IAM Roles",
+    "GitHub OIDC authentication",
+    "AWS Secrets Manager",
+    "HTTPS / ACM",
+    "CloudFront",
+    "ECR image scanning",
+    "Least-privilege CI/CD roles",
+  ],
+
+  cicd: [
+    "GitHub Push / Pull Request",
+    "GitHub Actions",
+    "Terraform Format / Validate / Plan",
+    "Terraform Apply",
+    "Docker Build",
+    "Amazon ECR",
+    "ECS Task Definition Update",
+    "ECS Fargate Deployment",
+    "Backend Health Check",
+    "React/Vite Build",
+    "Amazon S3 Deployment",
+    "CloudFront Invalidation",
+  ],
+
+  environments: [
+    "develop → Development Environment",
+    "main → Production Environment",
+    "Pull Request → Terraform Plan / Validation",
+    "Production → Controlled Terraform Deployment",
+  ],
+
+  infrastructure: [
+    "Terraform",
+    "Terraform Modules",
+    "Remote State",
+    "AWS VPC",
+    "Public Subnets",
+    "Private App Subnets",
+    "Private DB Subnets",
+    "Internet Gateway",
+    "NAT Gateway",
+    "Route Tables",
+    "Network ACLs",
+  ],
+
+  tech: [
+    "AWS",
+    "Terraform",
+    "Docker",
+    "GitHub Actions",
+    "GitHub OIDC",
+    "Amazon ECS Fargate",
+    "Amazon ECR",
+    "Amazon RDS",
+    "PostgreSQL",
+    "Amazon S3",
+    "CloudFront",
+    "Application Load Balancer",
+    "VPC",
+    "Security Groups",
+    "IAM",
+    "AWS Secrets Manager",
+    "AWS Certificate Manager",
+    "CloudWatch",
+    "React",
+    "Vite",
+    "Node.js",
+    "Express.js",
+  ],
+
+  images: [project1],
+
+  github:
+    "https://github.com/Puru1375/terraform-aws-enterprise",
+
+  live: "",
+},
 
   {
     id: 2,
