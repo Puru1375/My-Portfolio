@@ -54,7 +54,7 @@ const projects = [
     "Cloud Architecture / DevOps / Infrastructure as Code",
 
   title:
-    "Production-Grade AWS Cloud Platform",
+    "Multi-Environment AWS Infrastructure Automation with Terraform",
 
   shortTitle:
     "AWS DevOps Platform",
@@ -62,7 +62,7 @@ const projects = [
   featured: true,
 
   description:
-    "Designed and deployed a production-grade full-stack application platform on AWS using Terraform, Docker, ECS Fargate, RDS PostgreSQL, CloudFront, S3 and GitHub Actions CI/CD.",
+    "Designed and deployed AWS infrastructure across 2 environments, Development and Production, using Terraform and GitHub Actions CI/CD.",
 
   problem:
     "The application needed a production-ready cloud platform with secure networking, isolated application and database layers, containerized deployment, managed PostgreSQL, HTTPS, infrastructure as code, automated CI/CD and separate development and production environments.",
